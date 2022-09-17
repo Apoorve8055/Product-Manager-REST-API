@@ -11,6 +11,9 @@ const constaint = {
       body: {},
     },
   },
+  REQUEST_VALIDATION: {
+    BAD_REQUEST_MESSAGE: "invalid field",
+  },
 };
 
 export default constaint;
