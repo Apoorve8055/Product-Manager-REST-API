@@ -1,4 +1,3 @@
-import joi from "joi";
 import constaint from "../constaint/index.js";
 
 const validateObjectSchema = (data, schema) => {
@@ -15,7 +14,7 @@ const validateObjectSchema = (data, schema) => {
   return null;
 };
 
-const joiSchemaValidatior = (schema) => {
+export const joiSchemaValidatior = (schema) => {
   return (req, res, next) => {
     let response = { ...constaint.DEFAULT_SERVER_RESPONSE };
     const error = validateObjectSchema(req.body, schema);
@@ -27,4 +26,16 @@ const joiSchemaValidatior = (schema) => {
     return next();
   };
 };
-export default joiSchemaValidatior;
+
+export const joiParamsValidatior = (schema) => {
+  return (req, res, next) => {
+    let response = { ...constaint.DEFAULT_SERVER_RESPONSE };
+    const error = validateObjectSchema(req.query, schema);
+    if (error) {
+      response.body = error;
+      response.message = constaint.REQUEST_VALIDATION.BAD_REQUEST_MESSAGE;
+      return res.status(response.status).json(response);
+    }
+    return next();
+  };
+};
