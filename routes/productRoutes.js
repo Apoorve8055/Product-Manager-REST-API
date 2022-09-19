@@ -6,6 +6,7 @@ import {
 import {
   createProductController,
   fetchAllProductController,
+  fetchProductByIdController,
 } from "../controller/productController.js";
 import {
   joiParamsValidatior,
@@ -24,5 +25,7 @@ router.get(
   joiParamsValidatior(fetchProductSchema),
   fetchAllProductController
 );
+
+router.get("/:id", fetchProductByIdController);
 
 export default router;

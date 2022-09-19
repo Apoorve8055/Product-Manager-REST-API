@@ -14,10 +14,12 @@ const constaint = {
       status: 200,
       message: "Product fetched successfully!",
     },
+    PRODUCT_NOT_FOUND: "Product not found",
   },
   REQUEST_VALIDATION: {
     BAD_REQUEST_MESSAGE: "invalid field",
   },
+  DATABASE_MESSAGE: "invalid Params",
 };
 
 export default constaint;

@@ -1,5 +1,9 @@
+import constaint from "../constaint/index.js";
 import product from "../database/model/product.js";
-import { transformMongodbData } from "../helper/mongodbHelper.js";
+import {
+  checkObjectId,
+  transformMongodbData,
+} from "../helper/mongodbHelper.js";
 
 export const insertProductService = async (serviceData) => {
   try {
@@ -18,6 +22,17 @@ export const fetchAllProducttService = async ({ skip = 0, limit = 10 }) => {
       .find({})
       .skip(parseInt(skip))
       .limit(parseInt(limit));
+    return transformMongodbData(result);
+  } catch (err) {
+    console.log(`Something went wrong ERROR: ${err}`);
+    throw new Error(err);
+  }
+};
+export const fetchProductByIdService = async ({ id }) => {
+  try {
+    checkObjectId(id);
+    let result = await product.findById(id);
+    if (!result) throw new Error(constaint.PRODUCT_RESONSE.PRODUCT_NOT_FOUND);
     return transformMongodbData(result);
   } catch (err) {
     console.log(`Something went wrong ERROR: ${err}`);
