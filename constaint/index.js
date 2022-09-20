@@ -28,6 +28,7 @@ const constaint = {
   },
   REQUEST_VALIDATION: {
     BAD_REQUEST_MESSAGE: "invalid field",
+    INVAILD_TOKEN: "token not found",
   },
   DATABASE_MESSAGE: "invalid Params",
 };
