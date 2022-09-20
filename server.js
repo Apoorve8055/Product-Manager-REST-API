@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import dbConnection from "./database/connection.js";
 import productRouter from "./routes/productRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use((err, req, res, next) => {
 
 // application-level middleware
 app.use("/api/v1/product", productRouter);
+app.use("/api/v1/", userRouter);
 
 // Route
 app.get("/", (req, res) => {

@@ -10,3 +10,9 @@ export const fetchProductSchema = joi.object().keys({
   skip: joi.string(),
   limit: joi.number(),
 });
+
+export const updateProductSchema = joi.object().keys({
+  name: joi.string(),
+  price: joi.number(),
+  brand: joi.string(),
+});
